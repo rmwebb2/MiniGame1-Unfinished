@@ -29,7 +29,7 @@ public class Player {
         //Rooms current = room.get(location);
 
         for (Exit ex : exits) {
-            if (ex.getDirection().equalsIgnoreCase(direction)) {
+            if (ex.getDirection().equalsIgnoreCase(direction)) {  //setting location to destination
                 setLocation(ex.getDestination());
             }
         }

@@ -14,7 +14,7 @@ public class GameUI {
         Scanner input = new Scanner(System.in);
 
         ArrayList<Rooms> rooms = new ArrayList<>();
-        File roomFile = new File("src/MiniGame1/Rooms.txt");
+        File roomFile = new File("src/MiniGame1/Rooms.txt");  //will fix this so it doesn't come through source
 
 
         try {
@@ -24,13 +24,14 @@ public class GameUI {
 
                 String roomNum = readFile.nextLine();
                 System.out.println(roomNum);
-                String roomName = readFile.nextLine();
+                String roomName = readFile.nextLine();                               
                 System.out.println(roomName);
                 ArrayList<String> roomDescription = new ArrayList<>();
                 ArrayList<Exit> exits = new ArrayList<>();
+                
                 Rooms room = new Rooms(roomNum, roomName, roomDescription, exits);
-                String line = readFile.nextLine();
-                while (!line.equals("----------")) {
+                String line = readFile.nextLine();  //reading the File to read the room and adding the descriptions into roomDescription arraylist
+                while (!line.equals("----------")) { 
                     room.roomDescription.add(line);
                     line = readFile.nextLine();
                 }
@@ -39,15 +40,15 @@ public class GameUI {
 
                 while (readFile.hasNextLine() && !(line = readFile.nextLine()).equals("----------")) {
                     //String[] info = line.split(" ");
-                    String direction = line.split(" ")[0];
+                    String direction = line.split(" ")[0];   //splitting the direction (e.g."SOUTH") & destination
                     int destination = Integer.parseInt(line.split(" ")[1]);
-                    exits.add(new Exit(direction, destination));
+                    exits.add(new Exit(direction, destination)); //adding direction and destination to exits arraylist
 
                 }
 
                 room.setExits(exits);
-                rooms.add(new Rooms(roomNum, roomName, roomDescription, exits));
-                System.out.println(room.getExits());
+                rooms.add(new Rooms(roomNum, roomName, roomDescription, exits)); //adding each description into rooms arraylist
+                System.out.println(room.getExits()); //getting exits
 
             }
 
